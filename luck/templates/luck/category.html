@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Category
+{% endblock title %}
+
+{% block content %}
+    {% for category in category %}
+        <div class="luck-box">
+            <div class="luck_box">
+                <h2>{{category.name }}</h2>  
+                <a href="{% url 'category_detail' category.pk  %}">
+                    <img src="{{category.image.url}}" alt="{{ category.name }}">
+                </a>
+            </div>
+          
+    {% endfor %}
+{% endblock %}
