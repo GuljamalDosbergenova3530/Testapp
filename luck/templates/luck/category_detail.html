@@ -2,14 +2,14 @@
 {% load static %}
 
 {% block title %}
-    Category
+    Category page
 {% endblock title %}
 
 {% block content %}
     <div class="luck-box">
         <div class="luck_box">
             <h2>{{category.name }}</h2>  
-            <img src="{{category.image.url}}" alt="">
+            <img id="category_img" src="{{category.image.url}}" alt="">
             <h4>{{ category.price }}</h4>
             <h4>{{ category.description }}</h4>
         </div>

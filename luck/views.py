@@ -1,6 +1,7 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,redirect
 from django.http import Http404
-from .models import *
+from .models import Category,Product
+from .forms import CategoryForm
 
 def home(request):
     
@@ -31,5 +32,20 @@ def contact(request):
     return render(request, 'luck/contact.html')
 
 def create_category(request):
-    print(request.POST)
-    return render(create_category, 'luck/create_category.html')
+    if request.method =='POST':
+        form = CategoryForm(request.POST,request.FILES)
+        if form.is_valid():
+            cd = form.cleaned_data
+            Category.objects.create(
+                name=cd['name'],
+                image=cd['image'],
+                description=cd['description'],
+                price=cd['price']
+            )
+            return redirect(to='category')
+    else:
+         form = CategoryForm() 
+    context = {
+        'form' : form
+    } 
+    return render(request, 'luck/create_category.html', context)

@@ -1,5 +1,12 @@
 from django.urls import path
-from .views import home, category, about, contact, category_detail,create_category
+from .views import (
+    home,
+    category,
+    about,
+    contact,
+    category_detail,
+    create_category
+)
 
 urlpatterns = [
     path('', home, name='home'),
